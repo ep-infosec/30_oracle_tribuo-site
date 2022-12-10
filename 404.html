@@ -1,0 +1,26 @@
+---
+layout: redirect404
+title: Page not found
+permalink: /404
+nav_exclude: true
+search_exclude: true
+---
+<main class="container-fluid flex-fill pythia">
+<div class="row justify-content-center">
+    <div class="col-8 text-center">
+        <div style="margin-top: 40px;">
+        <div id="notFoundMessage">
+            <p>Sorry, the page you were trying to find seems to be missing.</p>
+            <p>Return to the
+            <a href="{{ site.url }}">home page</a> or use the search box to find what you need.</p>
+        </div>
+        <div id="notFoundLearnMessage" style="display: none;">
+            <p>The page you are trying to view does not exist in this version of the
+                documentation.</p>
+            <p>This page will redirect to the <a id="docsTop" href="">top-level doc page</a> for the
+                version you are browsing.</p>
+        </div>
+        </div>
+    </div>
+</div>
+</main>

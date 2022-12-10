@@ -1,0 +1,120 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if site.description %}
+    <meta name="Description" content="{{ site.description }}">
+    {% endif %}
+    <!--
+       The layout, graphical elements, and overall site design for tribuo.org
+       were developed by:
+
+       Simon Jeal (http://simonjeal.info)
+       Alex Chan-Perryman (http://achanperryman.com)
+
+       Any mistakes should be blamed on the site implementors, not the designers!
+     -->
+    <!-- Open Graph Insertion -->
+    <meta content="{{ site.title }}" property="og:site_name">
+{% if page.og-title %}
+    <meta content="Tribuo: {{ page.og-title }}" property="og:title">
+{% else %}
+    {% if page.title %}
+    <meta content="Tribuo: {{ page.title }}" property="og:title">
+    {% else %}
+    <meta content="{{ site.title }}" property="og:title">
+    {% endif %}
+{% endif %}
+{% if page.learn_nav %}
+    <meta content="article" property="og:type">
+{% else %}
+    <meta content="website" property="og:type">
+{% endif %}
+{% if page.description %}
+    <meta content="{{ page.description }}" property="og:description">
+{% else %}
+    <meta content="{{ site.description }}" property="og:description">
+{% endif %}
+{% if page.url %}
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% endif %}
+{% if page.image %}
+    <meta content="{{ site.url }}{{ page.image }}" property="og:image">
+{% else %}
+    <meta content="{{ site.url }}{{ site.og-logo }}" property="og:image">
+{% endif %}
+{% if page.twitter-image %}
+    <meta content="{{ site.url }}{{ page.twitter-image }}" property="twitter:image">
+{% else %}
+    <meta content="{{ site.url }}{{ site.twitter-logo }}" property="twitter:image">
+{% endif %}
+{% if page.twitter-handle %}
+    <meta content="{{ site.twitter-handle }}" property="twitter:site">
+{% else %}
+    <meta content="{{ site.url }}{{ site.twitter-logo }}" property="twitter:image">
+{% endif %}
+{% for tag in site.og-tags %}
+    <meta content="{{ tag }}" property="article:tag">
+{% endfor %}
+{% if page.tags %}
+    {% for tag in page.tags %}
+        <meta content="{{ tag }}" property="article:tag">
+    {% endfor %}
+{% endif %}
+    <!-- End Open Graph -->
+
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "assets/css/bootstrap.min.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "assets/css/tribuo.min.css" | relative_url }}">
+    {% if page.is_notebook %}
+    <!-- BEGIN Notebook Setup -->
+    <link rel="stylesheet" href="{{ "assets/css/notebook.min.css" | relative_url }}">
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+    <!-- END Notebook Setup -->
+    {% endif %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+    </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/img/favicon/apple-touch-icon.png" | relative_url }}">
+    <link rel="icon" sizes="32x32" href="{{ "/assets/img/favicon/favicon-32x32.png" | relative_url }}">
+    <link rel="icon" sizes="16x16" href="{{ "/assets/img/favicon/favicon-16x16.png" | relative_url }}">
+    <link rel=”manifest” href=”{{ "/assets/img/favicon/site.manifest" | relative_url }}”>
+
+    {% if site.search_enabled != nil %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
+    {% endif %}
+    <!-- TrustArc Concent Script -->
+    <script async="async" type="text/javascript" src='https://consent.truste.com/notice?domain=oracle.com&c=teconsent&js=bb&noticeType=bb&text=true&cdn=1&pcookie&gtm=1' crossorigin></script>
+    <!-- Oracle's Concent Helper -->
+    <script type="text/javascript" src="https://www.oracle.com/assets/truste-oraclelib.js"></script>
+    <!-- Start SiteCatalyst code -->
+    <script language="JavaScript">
+    var s_prefix = "tribuo";
+    var s_pageName = s_prefix + ":" + document.title;
+    </script>
+    <script language="JavaScript" src="https://www.oracle.com/us/assets/metrics/ora_otn.js">
+    </script>
+    <!-- End SiteCatalyst code -->
+</head>
